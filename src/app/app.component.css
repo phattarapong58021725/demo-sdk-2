@@ -29,7 +29,7 @@
 .app-sidebar-title {
     margin: 0;
     font-size: 1.5rem;
-    font-weight: 600;
+
     color: #ecf0f1;
 }
 
@@ -51,7 +51,7 @@
     color: #bdc3c7;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-weight: 400;
+    /* ลดจาก 400 เป็น 300 ให้บางกว่า */
 }
 
 .app-sidebar-link:hover {
