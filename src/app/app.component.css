@@ -3,9 +3,122 @@
     display: flex;
     height: 100vh;
     width: 100%;
+    position: relative;
 }
 
-/* Sidebar Navigation - ใช้ prefix app- เพื่อไม่กระทบ SDK */
+/* Top Fixed Navbar */
+.app-top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.app-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.app-navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.app-logo-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.app-navbar-breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.app-breadcrumb-item {
+    color: #666;
+    font-weight: 300;
+}
+
+.app-breadcrumb-item.active {
+    color: #333;
+    font-weight: 400;
+}
+
+.app-breadcrumb-separator {
+    margin: 0 8px;
+    color: #999;
+}
+
+.app-navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.app-navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.app-user-label {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.app-user-status {
+    color: #dc3545;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.app-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 12px;
+}
+
+.app-user-name {
+    color: #333;
+    font-weight: 400;
+}
+
+.app-user-role {
+    color: #666;
+    font-weight: 300;
+}
+
+.app-notification-badge {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Sidebar Navigation - ปรับให้เหมาะกับ top navbar */
 .app-sidebar {
     width: 250px;
     background-color: #2c3e50;
@@ -15,7 +128,8 @@
     position: fixed;
     height: 100vh;
     left: 0;
-    top: 0;
+    top: 60px;
+    /* เริ่มใต้ top navbar */
     z-index: 1000;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -76,14 +190,17 @@
     font-size: 1rem;
 }
 
-/* Main Content Area - เว้นที่สำหรับ sidebar */
+/* Main Content Area - เว้นที่สำหรับ sidebar และ top navbar */
 .app-main-content {
     margin-left: 250px;
+    margin-top: 60px;
+    /* เว้นที่สำหรับ top navbar */
     flex: 1;
     padding: 20px;
     background-color: #f8f9fa;
     overflow-x: auto;
-
+    /* min-height: calc(100vh - 60px); */
+    /* ลบความสูงของ top navbar */
 }
 
 /* Container สำหรับ SDK - แยกออกมาเพื่อไม่ให้ CSS กระทบ */
@@ -100,12 +217,28 @@
 
     .app-main-content {
         margin-left: 200px;
+        margin-top: 60px;
         padding: 15px;
-
     }
 
     .app-sidebar-text {
         font-size: 0.9rem;
+    }
+
+    .app-navbar-left {
+        gap: 15px;
+    }
+
+    .app-logo-text {
+        font-size: 16px;
+    }
+
+    .app-navbar-breadcrumb {
+        font-size: 12px;
+    }
+
+    .app-navbar-user {
+        gap: 10px;
     }
 }
 
@@ -117,6 +250,25 @@
 
     .app-main-content {
         margin-left: 0;
+        margin-top: 60px;
         padding: 10px;
+    }
+
+    .app-top-navbar {
+        padding: 0 10px;
+    }
+
+    .app-navbar-breadcrumb {
+        display: none;
+        /* ซ่อน breadcrumb บนมือถือ */
+    }
+
+    .app-user-info {
+        display: none;
+        /* ซ่อน user info บนมือถือ */
+    }
+
+    .app-logo-text {
+        font-size: 14px;
     }
 }
